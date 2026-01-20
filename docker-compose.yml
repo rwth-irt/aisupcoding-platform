@@ -1,0 +1,100 @@
+services:
+  request-handler:
+    build:
+      context: ./platform/request-handler/
+      dockerfile: Dockerfile
+    ports:
+      - "64000:1000"
+    environment:
+      MONGO_URI: "mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASS}@mongo:27017/studentRequests?authSource=admin"
+      FIGURE_SERVICE_ADDR: "image-classifier:55000"
+      DATA_SERVICE_ADDR: "databased-classifier:56000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+      databased-classifier:
+        condition: service_started
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+      - "127.0.0.1:27018:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASS}
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  mongo-express:
+    image: mongo-express:latest
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_USER}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_PASS}
+      ME_CONFIG_MONGODB_URL: "mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASS}@mongo:27017/admin?authSource=admin"
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  databased-classifier:
+    build:
+      context: .
+      dockerfile: ./platform/databased-classifier/Dockerfile
+    environment:
+      - MLM_LICENSE_FILE=${MLM_LICENSE_FILE}
+    ports:
+      - "56000:56000"
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  frontend:
+    build: ./platform/react-frontend        
+    ports:
+      - "3000:3000" 
+    environment: 
+      - REACT_APP_API_BASE_URL=http://localhost:5001  
+    stdin_open: true         
+    tty: true
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build: ./platform/node-backend
+    ports:
+      - "5001:5001"
+    environment:
+      - MONGO_URI=mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASS}@mongo:27017/studentRequests?authSource=admin
+      - JWT_SECRET=${JWT_SECRET}
+      - CORS_OPTION=http://localhost:3000
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge
