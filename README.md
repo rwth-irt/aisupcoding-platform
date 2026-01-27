@@ -11,3 +11,15 @@ To accommodate diverse coding styles, the platform employs a hybrid evaluation s
 The entire project can be deployed using docker and docker compose.
 To build the project you can use: `docker compose up -d --build .`
 Please adapt the specific keys in your `.env` file.
+
+## Licensing and Attribution
+
+This project is licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license. You are free to share and adapt the material as long as appropriate credit is given.
+
+### Third-Party Software and Models
+While the project code is open, it utilizes several components that carry their own licenses:
+
+* **Database:** MongoDB is used under the Server Side Public License (SSPL).
+* **LLM Service:** Ollama and its associated tools are used under the MIT License.
+* **Model Weights:** The `qwen2.5-coder:32b` model is subject to the Alibaba Cloud Qwen Research License Agreement.
+* **MATLAB Components:** The `databased-classifier` service requires a valid MATLAB license to operate (referenced via `MLM_LICENSE_FILE`).
