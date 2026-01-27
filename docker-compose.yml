@@ -9,6 +9,8 @@ services:
       MONGO_URI: "mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASS}@mongo:27017/studentRequests?authSource=admin"
       FIGURE_SERVICE_ADDR: "image-classifier:55000"
       DATA_SERVICE_ADDR: "databased-classifier:56000"
+      LLM_SERVICE_ADDR: "http://ollama:11434"
+      LLM_MODEL_NAME: "qwen2.5-coder:32b"
     depends_on:
       mongo:
         condition: service_healthy
@@ -91,9 +93,29 @@ services:
         condition: service_healthy
     networks:
       - app-network
+  
+  ollama:
+    build:
+      context: ./platform/ollama/
+      dockerfile: Dockerfile
+    container_name: ollama
+    volumes:
+      - ollama-data:/root/.ollama
+    # Uncomment the following if you have an NVIDIA GPU and want hardware acceleration
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    networks:
+      - app-network
+    restart: unless-stopped
 
 volumes:
   mongo-data:
+  ollama-data:
 
 networks:
   app-network:
