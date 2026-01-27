@@ -1,6 +1,4 @@
 *.png
-*.jpeg
-*.jpg
 
 # python stuff
 __pycache__/
