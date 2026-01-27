@@ -1,0 +1,62 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Open-Source Intelligent Tutoring System for Programming
+  Exercises in Engineering Education
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Robert
+    family-names: Göllinger
+    email: r.goellinger@irt.rwth-aachen.de
+    affiliation: 'Institute of Automatic Control, RWTH Aachen University'
+    orcid: 'https://orcid.org/0009-0005-0694-8948'
+  - given-names: Jens
+    family-names: Ahlers
+    email: j.ahlers@irt.rwth-aachen.de
+    affiliation: 'Institute of Automatic Control, RWTH Aachen University'
+  - given-names: Sebastian
+    family-names: Stemmler
+    email: s.stemmler@irt.rwth-aachen.de
+    affiliation: 'Institute of Automatic Control, RWTH Aachen University'
+identifiers:
+  - type: doi
+    value: 10.18154/RWTH-2026-00498
+    description: RWTHpublications
+repository-code: 'https://github.com/rwth-irt/kisupcoding-platform'
+abstract: >-
+  Implementing control and machine learning algorithms in
+  MATLAB and Simulink is a critical competency in advanced
+  control engineering. While immediate feedback is essential
+  for fostering intuitive understanding, it is traditionally
+  constrained to scheduled exercise sessions or consultation
+  hours. To bridge this gap, this project introduces an
+  open-source intelligent tutoring platform that provides
+  continuous, on-demand feedback.To accommodate diverse
+  solution strategies, the platform employs a hybrid
+  evaluation strategy combining result-based and code-based
+  metrics. This ensures that valid alternative solutions
+  that differ from predefined sample solutions are not
+  misclassified. In case of incorrect solutions, a Large
+  Language Model, contextualized with sample solutions and
+  task classification results, offers auxiliary support for
+  students struggling to initiate or complete tasks.
+  Instructional scaffolding is adaptively adjusted to guide
+  students toward independent problem-solving. We position
+  this platform as a supplementary tool designed to enhance,
+  rather than replace, valuable interactions between
+  students and human tutors. Built on open-source tools, the
+  system is architected for reusability, enabling lecturers
+  across engineering subjects to adapt the framework to
+  their teaching needs easily.
+keywords:
+  - Intelligent Tutoring System
+  - Computer Engineering Eductation
+  - Large Language Models
+  - Control Engineering
+version: v1.0
+date-released: '2026-01-30'
