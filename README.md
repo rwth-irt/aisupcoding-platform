@@ -1,6 +1,6 @@
 # AIsupCoding platform
 Intelligent tutoring platform for [Machine Learning in Industrial Control Engineering](https://www.irt.rwth-aachen.de/cms/irt/studium/lehrveranstaltungen/~qizba/maschinelles-lernen-in-der-industriellen/?lidx=1) at the [Institute of Automatic Control](https://www.irt.rwth-aachen.de/cms/~iung/irt/lidx/1/), RWTH Aachen University. 
-The software was developed as part of the project "AIsupCoding" funded by [Stiftung Innovation in der Hochschullehre](https://stiftung-hochschullehre.de/) under project number Freiraum-282/2023.
+The software was developed as part of the project "KI-sup-Coding" funded by [Stiftung Innovation in der Hochschullehre](https://stiftung-hochschullehre.de/) under project number Freiraum-282/2023.
 
 ## Abstract
 Implementing control and machine learning algorithms in languages such as MATLAB and Simulink is a critical competency in advanced control engineering. While immediate feedback is essential for fostering intuitive understanding, it is traditionally constrained to scheduled exercise sessions or consultation hours. To bridge this gap, this project introduces an open-source intelligent tutoring platform that provides continuous, on-demand feedback.
