@@ -25,9 +25,9 @@ authors:
     affiliation: 'Institute of Automatic Control, RWTH Aachen University'
 identifiers:
   - type: doi
-    value: 10.18154/RWTH-2026-00498
+    value: 10.18154/RWTH-2026-00924
     description: RWTHpublications
-repository-code: 'https://github.com/rwth-irt/kisupcoding-platform'
+repository-code: 'https://github.com/rwth-irt/aisupcoding-platform'
 abstract: >-
   Implementing control and machine learning algorithms in
   MATLAB and Simulink is a critical competency in advanced
@@ -58,5 +58,5 @@ keywords:
   - Computer Engineering Eductation
   - Large Language Models
   - Control Engineering
-version: v1.0
-date-released: '2026-01-30'
+version: v1.0.1
+date-released: '2026-02-23'
